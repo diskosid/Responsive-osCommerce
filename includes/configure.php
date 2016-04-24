@@ -42,4 +42,12 @@
   define('DB_DATABASE', 'osCommerce');
   define('USE_PCONNECT', 'false'); // use persistent connections?
   define('STORE_SESSIONS', ''); // leave empty '' for default handler or set to 'mysql'
-?>
+  define('STORE_SESSIONS', 'mysql'); // leave empty '' for default handler or set to 'mysql'
+  define('CFG_TIME_ZONE', 'Europe/London');
+  
+// Debugging for dev/production
+  define('DEBUG_MODE', true);
+  
+  $debug = DEBUG_MODE ? array(E_ALL, 'on') : array(E_WARNING, 'off');
+  error_reporting($debug[0]);
+  ini_set("display_errors", $debug[1]);

@@ -54,4 +54,12 @@
   define('DB_DATABASE', 'osCommerce');
   define('USE_PCONNECT', 'false');
   define('STORE_SESSIONS', '');
-?>
+
+// Debugging for dev/production
+  define('DEBUG_MODE', true);
+  
+  $debug = DEBUG_MODE ? array(E_ALL, 'on') : array(E_WARNING, 'off');
+  error_reporting($debug[0]);
+  ini_set("display_errors", $debug[1]);
+
+  $SID = session_id();
