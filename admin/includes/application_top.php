@@ -66,8 +66,10 @@
 
 // set application wide parameters
   $configuration_query = tep_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION);
-  while ($configuration = tep_db_fetch_array($configuration_query)) {
-    define($configuration['cfgKey'], $configuration['cfgValue']);
+  while (($configuration = tep_db_fetch_array($configuration_query)) !== null) {
+  	if (!defined($configuration['cfgKey'])) {
+      define($configuration['cfgKey'], $configuration['cfgValue']);
+  	}
   }
 
 // define our general functions used application-wide

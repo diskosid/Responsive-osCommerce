@@ -45,6 +45,7 @@
 
 // Add the session ID when moving from different HTTP and HTTPS servers, or when SID is defined
     if ( ($add_session_id == true) && (SESSION_FORCE_COOKIE_USE == 'False') ) {
+      $SID = isset($SID) ? $SID : null;
       if (tep_not_null($SID)) {
         $_sid = $SID;
       } elseif ( ( ($request_type == 'NONSSL') && ($connection == 'SSL') && (ENABLE_SSL == true) ) || ( ($request_type == 'SSL') && ($connection == 'NONSSL') ) ) {
